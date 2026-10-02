@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListView" name="listView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>201</width>
+      <height>551</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QScrollBar" name="verticalScrollBar">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>0</y>
+      <width>20</width>
+      <height>551</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAusw_hlen">
+    <property name="title">
+     <string>Auswählen</string>
+    </property>
+    <widget class="QMenu" name="menuNote_hinzuf_gen">
+     <property name="title">
+      <string>Note hinzufügen</string>
+     </property>
+     <widget class="QMenu" name="menuDeutsch">
+      <property name="title">
+       <string>Deutsch</string>
+      </property>
+      <addaction name="actionM_ndlich_5"/>
+     </widget>
+     <widget class="QMenu" name="menuGeschichte">
+      <property name="title">
+       <string>Geschichte</string>
+      </property>
+      <addaction name="actionM_ndlich_7"/>
+     </widget>
+     <widget class="QMenu" name="menuReligion">
+      <property name="title">
+       <string>Religion</string>
+      </property>
+      <addaction name="actionM_ndlich_6"/>
+     </widget>
+     <widget class="QMenu" name="menuGeselschaftskunde">
+      <property name="title">
+       <string>Geselschaftskunde</string>
+      </property>
+      <addaction name="actionM_ndlich_8"/>
+     </widget>
+     <widget class="QMenu" name="menuMathe">
+      <property name="title">
+       <string>Mathe</string>
+      </property>
+      <addaction name="actionM_ndlich_2"/>
+     </widget>
+     <widget class="QMenu" name="menuPhysik">
+      <property name="title">
+       <string>Physik</string>
+      </property>
+      <addaction name="actionM_ndlich"/>
+      <addaction name="actionSchriftlich"/>
+     </widget>
+     <widget class="QMenu" name="menuEnglisch">
+      <property name="title">
+       <string>Englisch</string>
+      </property>
+      <addaction name="actionVokabeltest"/>
+     </widget>
+     <widget class="QMenu" name="menuMathe_2">
+      <property name="title">
+       <string>Mathe+</string>
+      </property>
+      <addaction name="actionM_ndlich_3"/>
+     </widget>
+     <widget class="QMenu" name="menuChemie">
+      <property name="title">
+       <string>Chemie</string>
+      </property>
+      <addaction name="actionM_ndlich_4"/>
+     </widget>
+     <addaction name="menuPhysik"/>
+     <addaction name="menuMathe"/>
+     <addaction name="menuMathe_2"/>
+     <addaction name="menuChemie"/>
+     <addaction name="separator"/>
+     <addaction name="menuEnglisch"/>
+     <addaction name="menuDeutsch"/>
+     <addaction name="separator"/>
+     <addaction name="menuReligion"/>
+     <addaction name="menuGeschichte"/>
+     <addaction name="menuGeselschaftskunde"/>
+     <addaction name="separator"/>
+     <addaction name="actionKunst"/>
+     <addaction name="actionSport"/>
+    </widget>
+    <addaction name="actionFach_hinzuf_gen"/>
+    <addaction name="menuNote_hinzuf_gen"/>
+   </widget>
+   <addaction name="menuAusw_hlen"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFach_hinzuf_gen">
+   <property name="text">
+    <string>Fach hinzufügen</string>
+   </property>
+  </action>
+  <action name="actionKunst">
+   <property name="text">
+    <string>Kunst</string>
+   </property>
+  </action>
+  <action name="actionSport">
+   <property name="text">
+    <string>Sport</string>
+   </property>
+  </action>
+  <action name="actionMathe_2">
+   <property name="text">
+    <string>Mathe+</string>
+   </property>
+  </action>
+  <action name="actionVokabeltest">
+   <property name="text">
+    <string>Vokabeltest</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionSchriftlich">
+   <property name="text">
+    <string>Schriftlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_2">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_3">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_4">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_5">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_6">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_7">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+  <action name="actionM_ndlich_8">
+   <property name="text">
+    <string>Mündlich</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
