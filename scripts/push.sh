@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Prüfen, ob eine Nachricht übergeben wurde, sonst Standard-Nachricht nutzen
+echo "Enter commit message: "
+read message
+
 if [ -z "$1" ]; then
     MSG="Auto-Update: Noten aktualisiert"
 else
-    MSG="$1"
+    MSG="$message"
 fi
 
 echo "📦 Füge Änderungen hinzu..."
