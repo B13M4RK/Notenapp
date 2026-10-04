@@ -4,11 +4,7 @@
 echo "Enter commit message: "
 read message
 
-if [ -z "$1" ]; then
-    MSG="Auto-Update: Noten aktualisiert"
-else
-    MSG="$message"
-fi
+MSG="$message"
 
 echo "📦 Füge Änderungen hinzu..."
 git add .
