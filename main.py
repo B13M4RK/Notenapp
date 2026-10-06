@@ -4,15 +4,23 @@ import json
 # Load Subjects from JSON
 try:
     with open("data_subjects.json", "r") as file:
-        data_subjects = json.load(file)
-except FileNotFoundError:
+        content = file.read().strip()
+        if not content:
+            data_subjects = {}
+        else:
+            data_subjects = json.loads(content)
+except (FileNotFoundError, json.JSONDecodeError):
     data_subjects = {}
 
 # Load Grades from JSON
 try:
     with open("data_grades.json", "r") as file:
-        data_grades = json.load(file)
-except FileNotFoundError:
+        content = file.read().strip()
+        if not content:
+            data_grades = {}
+        else:
+            data_grades = json.loads(content)
+except (FileNotFoundError, json.JSONDecodeError):
     data_grades = {}
 
 print("Geladene Fächer: ", data_subjects)
@@ -24,7 +32,7 @@ type_of_grades = [
 ]
 #grades_list = set()
 
-def recalculate_grades_and_averages():
+def calculate_average_grades():
     pass
 
 def add_subject():
@@ -114,7 +122,7 @@ def ask_for_user_input():
         elif user_input == 2:
             add_grade()
         elif user_input == 3:
-            recalculate_grades_and_averages()
+            calculate_average_grades()
         else:
             print("\nBitte wähle eine Zahl von oben")
     except ValueError:
