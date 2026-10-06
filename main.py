@@ -1,21 +1,28 @@
 import datetime
 import json
 
-# Load JSON from a file
+# Load Subjects from JSON
 try:
-    with open("data.json", "r") as file:
-        data = json.load(file)
+    with open("data_subjects.json", "r") as file:
+        data_subjects = json.load(file)
 except FileNotFoundError:
-    data = {}
+    data_subjects = {}
 
-"Acces JSON Data"
-print("Geladene Daten: ", data)
+# Load Grades from JSON
+try:
+    with open("data_grades.json", "r") as file:
+        data_grades = json.load(file)
+except FileNotFoundError:
+    data_grades = {}
+
+print("Geladene Fächer: ", data_subjects)
+print("Geladene Noten: ", data_grades)
 
 type_of_grades = [
     "ORA",
     "WRI",
 ]
-grades_list = set()
+#grades_list = set()
 
 def recalculate_grades_and_averages():
     pass
@@ -27,16 +34,16 @@ def add_subject():
     new_oral = float(input("Schreibe einen mündlichen Wert zwischen 0 und eins auf"))
     new_written = float(input("Schreibe einen schriftlichen Wert zwischen 0 und eins auf"))
 
-    # 2. Add new subject to existing Data
-    data[new_subject_name] = {
+    # 2. Add new subject to existing Data_subjects
+    data_subjects[new_subject_name] = {
         "key": new_code,
         "ORA": new_oral,
         "WRI": new_written
     }
 
-    # 3. Write whole Data into JSON file
-    with open("data.json", "w") as file:
-        json.dump(data, file, indent=4)
+    # 3. Write whole new subject into JSON file
+    with open("data_subjects.json", "w") as file:
+        json.dump(data_subjects, file, indent=4)
 
     # 4. Print out new subject
     print(f"\nFach '{new_subject_name}' ({new_code}) wurde hinzugefügt – mündlich: {new_oral}, schriftlich: {new_written}")
@@ -44,12 +51,12 @@ def add_subject():
 def add_grade():
     try:
         # Try if subjects exist
-        if not data:
+        if not data_subjects:
             print("\nEs sind noch keine Fächer vorhanden! Füge zuerst eins hinzu")
             return
 
         # 1. Get data from json as a list to get their index
-        subject_names = list(data.keys())
+        subject_names = list(data_subjects.keys())
 
         # 2. Print out all subjects
         print("\nVerfügbare Fächer:")
@@ -59,7 +66,7 @@ def add_grade():
         # 3. Select subject
         user_input = int(input(f"\nWähle die Nummer des Faches: "))
         selected_name = subject_names[user_input]
-        selected_code = data[selected_name]["key"]
+        selected_code = data_subjects[selected_name]["key"]
 
         # 4. Select type of grade
         print("\nNotenarten:")
@@ -72,14 +79,27 @@ def add_grade():
         points = int((input(f"\nSchreibe deine Punktzahl auf: ")))
 
         # 6. Get daytime
-        date = datetime.date.today()
+        date = str(datetime.date.today())
+        #print(date)
 
-        # 7. Add grades to grades list
-        # Key_gradeType_Points_Date
-        grades_list.add(f"{selected_code}_{grade_type}_{points}_{date}")
+        # 7. Load grade into data_grades
+        # check if subject is already in grades list
+        if selected_code not in data_grades:
+            data_grades[selected_code] = []
 
-        # 8. Print out grades list
-        print(grades_list)
+        data_grades[selected_code].append({
+            "type":grade_type,
+            "points":points,
+            "date":date,
+        })
+        #grades_list.add(f"{selected_code}_{grade_type}_{points}_{date}")
+
+        # 8. Write whole grade into JSON file
+        with open("data_grades.json", "w") as file:
+            json.dump(data_grades, file, indent=4)
+
+        # 9. Print out grades list
+        #print(grades_list)
 
     except ValueError:
         print("\n!!! Das war keine gültige Zahl! Bitte gib Ziffern ein !!!")

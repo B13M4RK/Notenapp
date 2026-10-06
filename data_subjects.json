@@ -1,0 +1,57 @@
+{
+    "Physik": {
+        "key": "PHY",
+        "ORA_weight": 0.33,
+        "WRI_weight": 0.66
+    },
+    "Mathe": {
+        "key": "MAC",
+        "ORA_weight": 0.33,
+        "WRI_weight": 0.66
+    },
+    "English": {
+        "key": "ENG",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Deutsch": {
+        "key": "GER",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Geschichte": {
+        "key": "HIS",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Kunst": {
+        "key": "ART",
+        "ORA_weight": 0.6,
+        "WRI_weight": 0.4
+    },
+    "GK": {
+        "key": "SOC",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Religion": {
+        "key": "REL",
+        "ORA_weight": 0.6,
+        "WRI_weight": 0.4
+    },
+    "Sport": {
+        "key": "PEE",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Mathe Vertiefung": {
+        "key": "MAA",
+        "ORA_weight": 0.5,
+        "WRI_weight": 0.5
+    },
+    "Chemie": {
+        "key": "CHE",
+        "ORA_weight": 0.6,
+        "WRI_weight": 0.4
+    }
+}
