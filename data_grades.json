@@ -1,0 +1,43 @@
+{
+    "ENG": [
+        {
+            "type": "oral",
+            "points": 12,
+            "date": "2026-10-07"
+        },
+        {
+            "type": "klausur",
+            "points": 14,
+            "date": "2026-10-07"
+        },
+        {
+            "type": "vocabulary-test",
+            "points": 8,
+            "date": "2026-10-07"
+        },
+        {
+            "type": "oral",
+            "points": 2,
+            "date": "2026-10-07"
+        }
+    ],
+    "ART": [
+        {
+            "type": "art-project",
+            "points": 13,
+            "date": "2026-10-07"
+        },
+        {
+            "type": "klausur",
+            "points": 13,
+            "date": "2026-10-07"
+        }
+    ],
+    "KUN": [
+        {
+            "type": "klausur",
+            "points": 13,
+            "date": "2026-10-07"
+        }
+    ]
+}

@@ -53,10 +53,19 @@ def calculate_average_grades(selected_code, grade_type, points):
     # 1. Get Sum of all points and count of grades of the same type
     sum_oral = 0
     count_oral = 0
+
     sum_klausur = 0
     count_klausur = 0
+
+    sum_vocabulary = 0
+    count_vocabulary = 0
+    vocabulary_test_exists = 0
+    average_vocabulary = 0
+
+    average_written = 0
+
     oral_weight = 0
-    klausur_weight = 0
+    written_weight = 0
 
     for grade in data_grades[selected_code]:
         if grade["type"] in ["oral", "sportif", "art-project"]:
@@ -68,30 +77,50 @@ def calculate_average_grades(selected_code, grade_type, points):
             count_klausur = count_klausur + 1
 
         elif grade["type"] == "vocabulary-test":
-            pass
+            sum_vocabulary = sum_vocabulary + int(grade["points"])
+            count_vocabulary = count_vocabulary + 1
 
+        '''
+        elif grade["type"] == "vocabulary-test":
+            # Go over every vocabulary test as above
+            sum_vocabulary = sum_vocabulary + int(grade["points"])
+            count_vocabulary = count_vocabulary +1
+
+            # Go over every klausur
+            sum_klausur = sum_klausur + int(grade["points"])
+            count_klausur = count_klausur + 1
+        '''
 
     # 3. Calculate average, average_oral, average_klausur
-    if count_oral <= 1:
-        count_oral = 1
-    if count_klausur <= 1:
-        count_klausur = 1
+    if count_oral < 1:
+        average_oral = 0
+    else:
+        average_oral = sum_oral / count_oral
 
-    average_oral = sum_oral / count_oral
-    average_klausur = sum_klausur / count_klausur
+    if (count_klausur < 1) and (count_vocabulary < 1):
+        average_written = 0
+    else:
+        if count_vocabulary < 1:
+            average_vocabulary = 0
+            vocabulary_test_exists = 0
+        else:
+            average_vocabulary = sum_vocabulary / count_vocabulary
+            vocabulary_test_exists = 1
+
+        average_written = (sum_klausur + average_vocabulary) / (count_klausur + vocabulary_test_exists)
 
     # get weighting of oral and writing
     for subject_name, subject_data in data_subjects.items():
         if subject_data["key"] == selected_code:
             oral_weight = subject_data["ORA"]
-            klausur_weight = subject_data["WRI"]
+            written_weight = subject_data["WRI"]
 
-    average = (average_klausur * klausur_weight) + (average_oral * oral_weight)
+    average = (average_written * written_weight) + (average_oral * oral_weight)
 
     # 4. Create new average JSON format
     data_averages[selected_code] = {
         "average_oral":average_oral,
-        "average_written":average_klausur,
+        "average_written":average_written,
         "average":average
     }
 
