@@ -23,17 +23,50 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     data_grades = {}
 
+# Load Grade_averages from JSON
+try:
+    with open("data_average_grades.json", "r") as file:
+        content = file.read().strip()
+        if not content:
+            data_averages = {}
+        else: data_averages = json.loads(content)
+except (FileNotFoundError, json.JSONDecodeError):
+    data_averages = {}
+
 print("Geladene Fächer: ", data_subjects)
 print("Geladene Noten: ", data_grades)
+print("Geladene Durchschnittsnoten", data_averages)
 
 type_of_grades = [
-    "ORA",
-    "WRI",
+    "oral",
+    "written",
+    "vocabulary-test",
+    "sportif",
+    "art-project"
 ]
 #grades_list = set()
 
-def calculate_average_grades():
-    pass
+def calculate_average_grades(selected_code, grade_type, points):
+
+    # 1. Get Sum of all points and count of grades of the same type
+    sum_points = 0
+    grades_count = 0
+    for  grade in data_grades[selected_code]:
+        if grade["type"] == grade_type:
+            sum_points = sum_points + int(grade["points"])
+            grades_count = grades_count + 1
+
+    # 3. Calculate average
+    average = sum_points / grades_count
+
+    # 4. Create new average JSON format
+    data_averages[selected_code] = {
+        "average":average
+    }
+
+    # 5. Overwrite old average grade from subject with new average
+    with open("data_average_grades.json", "w") as file:
+        json.dump(data_averages, file, indent=4)
 
 def add_subject():
     # 1. Define new subject
@@ -106,8 +139,8 @@ def add_grade():
         with open("data_grades.json", "w") as file:
             json.dump(data_grades, file, indent=4)
 
-        # 9. Print out grades list
-        #print(grades_list)
+        # 9. Calculate average grade
+        calculate_average_grades(selected_code, grade_type, points)
 
     except ValueError:
         print("\n!!! Das war keine gültige Zahl! Bitte gib Ziffern ein !!!")
@@ -121,8 +154,6 @@ def ask_for_user_input():
             add_subject()
         elif user_input == 2:
             add_grade()
-        elif user_input == 3:
-            calculate_average_grades()
         else:
             print("\nBitte wähle eine Zahl von oben")
     except ValueError:
