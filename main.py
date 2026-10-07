@@ -1,6 +1,8 @@
 import datetime
 import json
 
+from pygments.lexers import smalltalk
+
 # Load Subjects from JSON
 try:
     with open("data_subjects.json", "r") as file:
@@ -39,7 +41,7 @@ print("Geladene Durchschnittsnoten", data_averages)
 
 type_of_grades = [
     "oral",
-    "written",
+    "klausur",
     "vocabulary-test",
     "sportif",
     "art-project"
@@ -49,18 +51,47 @@ type_of_grades = [
 def calculate_average_grades(selected_code, grade_type, points):
 
     # 1. Get Sum of all points and count of grades of the same type
-    sum_points = 0
-    grades_count = 0
-    for  grade in data_grades[selected_code]:
-        if grade["type"] == grade_type:
-            sum_points = sum_points + int(grade["points"])
-            grades_count = grades_count + 1
+    sum_oral = 0
+    count_oral = 0
+    sum_klausur = 0
+    count_klausur = 0
+    oral_weight = 0
+    klausur_weight = 0
 
-    # 3. Calculate average
-    average = sum_points / grades_count
+    for grade in data_grades[selected_code]:
+        if grade["type"] in ["oral", "sportif", "art-project"]:
+            sum_oral = sum_oral + int(grade["points"])
+            count_oral = count_oral +1
+
+        elif grade["type"] == "klausur":
+            sum_klausur = sum_klausur + int(grade["points"])
+            count_klausur = count_klausur + 1
+
+        elif grade["type"] == "vocabulary-test":
+            pass
+
+
+    # 3. Calculate average, average_oral, average_klausur
+    if count_oral <= 1:
+        count_oral = 1
+    if count_klausur <= 1:
+        count_klausur = 1
+
+    average_oral = sum_oral / count_oral
+    average_klausur = sum_klausur / count_klausur
+
+    # get weighting of oral and writing
+    for subject_name, subject_data in data_subjects.items():
+        if subject_data["key"] == selected_code:
+            oral_weight = subject_data["ORA"]
+            klausur_weight = subject_data["WRI"]
+
+    average = (average_klausur * klausur_weight) + (average_oral * oral_weight)
 
     # 4. Create new average JSON format
     data_averages[selected_code] = {
+        "average_oral":average_oral,
+        "average_written":average_klausur,
         "average":average
     }
 
