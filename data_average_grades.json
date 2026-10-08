@@ -10,5 +10,12 @@
             "average_written": 0,
             "average": 0.0
         }
+    },
+    "PHY": {
+        "Q1": {
+            "average_oral": 0,
+            "average_written": 0,
+            "average": 0.0
+        }
     }
 }

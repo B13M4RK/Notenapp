@@ -140,11 +140,6 @@ class MainWindow(QMainWindow):
 
         if not app_icon.isNull():
             self.setWindowIcon(app_icon)
-
-        QtCore.QCoreApplication.setApplicationName("Notenapp")
-
-        # NEU: Erzwingt die Zuordnung für die Linux-Taskleiste (WM_CLASS)
-        self.setProperty("class", "Notenapp")
         # ---------------------------------------------
 
         # JSON-Daten und Einstellungen laden
@@ -480,6 +475,10 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
+
+    # WICHTIG: Verknüpft den Prozess exakt mit der .desktop-Datei (muss genauso heißen wie die .desktop-Datei ohne Endung)
+    app.setDesktopFileName("notenrechner")
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
