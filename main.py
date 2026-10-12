@@ -358,11 +358,27 @@ class MainWindow(QMainWindow):
         if current_quarter not in data_grades[selected_code]:
             data_grades[selected_code][current_quarter] = []
 
-        data_grades[selected_code][current_quarter].append({
-            "type": grade_type,
-            "points": points,
-            "date": date,
-        })
+
+        oral_grade_found = False
+
+        if grade_type == "oral":
+            for grade in data_grades[selected_code][current_quarter]:
+                if grade["type"] == "oral":
+                    oral_grade_found = True
+                    grade["points"] = points
+                    grade["date"] = date
+
+        if oral_grade_found == False:
+            data_grades[selected_code][current_quarter].append({
+                "type": grade_type,
+                "points": points,
+                "date": date,
+            })
+
+        oral_grade_found = False
+
+
+
 
         with open("data_grades.json", "w") as file:
             json.dump(data_grades, file, indent=4)

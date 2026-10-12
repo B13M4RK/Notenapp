@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Notenrechner
+Exec=/home/paul/Developer/Notenapp/start.sh
+Icon=accessories-calculator
+Terminal=false
+Categories=Education;

@@ -5,6 +5,29 @@
                 "type": "vocabulary-test",
                 "points": 15,
                 "date": "2026-10-08"
+            },
+            {
+                "type": "oral",
+                "points": 13,
+                "date": "2026-10-12"
+            }
+        ]
+    },
+    "PHY": {
+        "Q1": [
+            {
+                "type": "oral",
+                "points": 14,
+                "date": "2026-10-12"
+            }
+        ]
+    },
+    "HIS": {
+        "Q1": [
+            {
+                "type": "oral",
+                "points": 15,
+                "date": "2026-10-12"
             }
         ]
     }

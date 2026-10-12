@@ -1,9 +1,9 @@
 {
     "ENG": {
         "Q1": {
-            "average_oral": 0,
+            "average_oral": 13.0,
             "average_written": 15.0,
-            "average": 7.5
+            "average": 14.0
         },
         "Q2": {
             "average_oral": 0,
@@ -13,9 +13,16 @@
     },
     "PHY": {
         "Q1": {
-            "average_oral": 0,
+            "average_oral": 14.0,
             "average_written": 0,
-            "average": 0.0
+            "average": 4.62
+        }
+    },
+    "HIS": {
+        "Q1": {
+            "average_oral": 15.0,
+            "average_written": 0,
+            "average": 7.5
         }
     }
 }

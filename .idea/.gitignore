@@ -8,3 +8,12 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Virtuelle Umgebung
+.venv/
+venv/
+ENV/
+
+# Releases und Builds
+Notenapp_release/
+Notenapp_release.zip
